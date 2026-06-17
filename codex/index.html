@@ -1,0 +1,541 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brand & Content Designer Portfolio</title>
+    <meta
+      name="description"
+      content="브랜드를 이해하고 시각 언어와 콘텐츠로 경험을 설계하는 디자이너의 포트폴리오 랜딩 페이지입니다."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f1724;
+        --surface: rgba(255, 255, 255, 0.05);
+        --surface-strong: rgba(255, 255, 255, 0.11);
+        --text: #f8fafc;
+        --muted: rgba(248, 250, 252, 0.72);
+        --accent: #92a7c3;
+        --border: rgba(255, 255, 255, 0.12);
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px 70px;
+      }
+
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 24px 32px;
+        background: rgba(15, 23, 36, 0.24);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.92rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        display: inline-flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a {
+        color: rgba(248, 250, 252, 0.72);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+      }
+
+      .header-action {
+        padding: 12px 26px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .header-action:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .hero {
+        position: relative;
+        margin-top: 96px;
+        min-height: calc(100vh - 96px);
+        padding: 120px 0 100px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(15, 23, 36, 0.48), rgba(15, 23, 36, 0.82));
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+        filter: saturate(0.8) brightness(0.62);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        padding-left: 3px;
+      }
+
+      .eyebrow {
+        margin: 0 0 24px;
+        color: var(--accent);
+        font-size: 0.85rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        margin: 0 0 28px;
+        font-size: clamp(3.5rem, 7vw, 5.8rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        max-width: 11ch;
+      }
+
+      .hero-text {
+        margin: 0 0 38px;
+        max-width: 680px;
+        color: rgba(248, 250, 252, 0.82);
+        font-size: 1.12rem;
+        line-height: 1.9;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .primary-button,
+      .secondary-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 30px;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+
+      .primary-button {
+        background: #fff;
+        color: #0f1724;
+      }
+
+      .secondary-button {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 50px;
+        color: rgba(248, 250, 252, 0.76);
+        font-size: 0.92rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-meta span {
+        padding: 16px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .section-block {
+        padding: 120px 0;
+      }
+
+      .section-header {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2.8rem, 4vw, 4.4rem);
+        line-height: 1.04;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: rgba(248, 250, 252, 0.76);
+        font-size: 1.05rem;
+        max-width: 760px;
+        line-height: 1.9;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .portfolio-card {
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+      }
+
+      .portfolio-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .project-copy {
+        padding: 30px;
+      }
+
+      .project-meta {
+        margin: 0 0 12px;
+        color: rgba(248, 250, 252, 0.64);
+        font-size: 0.86rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .project-copy h3 {
+        margin: 0 0 16px;
+        font-size: 1.75rem;
+        line-height: 1.05;
+      }
+
+      .project-copy p {
+        margin: 0;
+        color: rgba(248, 250, 252, 0.82);
+        line-height: 1.9;
+      }
+
+      .contact-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 34px 36px;
+        border-radius: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .contact-strip p {
+        margin: 0;
+        font-size: 1rem;
+        color: rgba(248, 250, 252, 0.88);
+      }
+
+      .contact-strip a {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .footer {
+        padding: 50px 0 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        color: rgba(248, 250, 252, 0.64);
+        font-size: 0.95rem;
+      }
+
+      .footer a {
+        color: rgba(248, 250, 252, 0.82);
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          padding: 100px 0 80px;
+        }
+
+        .hero h1 {
+          font-size: clamp(3rem, 8vw, 5rem);
+        }
+
+        .hero-meta,
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-shell {
+          padding: 0 20px 60px;
+        }
+
+        .site-header {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 18px 20px;
+        }
+
+        .nav-links {
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .hero {
+          margin-top: 88px;
+          padding: 88px 0 70px;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.8rem, 12vw, 4rem);
+        }
+
+        .hero-text {
+          font-size: 1rem;
+        }
+
+        .contact-strip {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="홈으로 돌아가기">
+          <span class="brand-mark">BR</span>
+          <span>Brand & Content</span>
+        </a>
+        <nav class="nav-links" aria-label="페이지 섹션 이동">
+          <a href="#work">프로젝트</a>
+          <a href="#about">기획</a>
+          <a href="#contact">연락</a>
+        </nav>
+        <a class="header-action" href="mailto:hello@example.com">hello@example.com</a>
+      </header>
+
+      <section class="hero" id="top" aria-label="히어로 섹션">
+        <div class="hero-content">
+          <p class="eyebrow">Brand-focused Visual Designer</p>
+          <h1>브랜드를 이해하고, 시각 언어와 콘텐츠로 경험을 설계합니다.</h1>
+          <p class="hero-text">
+            브랜드의 메시지를 먼저 읽히게 하는 기획부터, 편집·비주얼·콘텐츠를 한 흐름으로 연결하는 포트폴리오입니다.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#work">프로젝트 보기</a>
+            <a class="secondary-button" href="#about">기획 방향</a>
+          </div>
+          <div class="hero-meta">
+            <span>브랜딩</span>
+            <span>콘텐츠 디자인</span>
+            <span>마케팅 커뮤니케이션</span>
+            <span>편집 구조</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block visible" id="work">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Projects</p>
+            <h2>브랜드 중심의 작업 사례</h2>
+          </div>
+          <p>
+            패션 플랫폼과 라이프스타일 브랜드가 감각적으로 읽을 수 있도록, 콘텐츠와 비주얼을 함께 설계한 사례를 모았습니다.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=80" alt="편집 디자인 작업 이미지" />
+            <div class="project-copy">
+              <p class="project-meta">Editorial · Magazine</p>
+              <h3>문화 매거진 시리즈</h3>
+              <p>콘텐츠 흐름에 따라 그리드와 이미지 구성을 다르게 설계한 매거진 작업입니다.</p>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1000&q=80" alt="브랜드 소개서 작업 이미지" />
+            <div class="project-copy">
+              <p class="project-meta">Brand · Brochure</p>
+              <h3>브랜드 소개서</h3>
+              <p>브랜드 메시지를 명확하게 정리하고 신뢰감 있는 시각으로 전달한 소개서 디자인입니다.</p>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=80" alt="캠페인 비주얼 작업 이미지" />
+            <div class="project-copy">
+              <p class="project-meta">Poster · Campaign</p>
+              <h3>캠페인 비주얼</h3>
+              <p>반복 가능한 그래픽 규칙으로 주제를 풀어낸 포스터와 온라인 배너 디자인입니다.</p>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80" alt="기획 문서 작업 이미지" />
+            <div class="project-copy">
+              <p class="project-meta">Catalog · Print</p>
+              <h3>제품 카탈로그</h3>
+              <p>제품 정보를 직관적으로 비교하도록 구성한 카탈로그 레이아웃입니다.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="about">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Story</p>
+            <h2>브랜드를 이해하는 사람으로 느껴지게 합니다.</h2>
+          </div>
+          <p>
+            편집 디자인 기반에서 브랜드와 콘텐츠 디자인으로 확장합니다. 브랜드 아이덴티티와 고객 경험을 함께 고려한 비주얼 커뮤니케이션을 제안합니다.
+          </p>
+        </div>
+
+        <div class="contact-strip">
+          <p>브랜드 중심의 콘텐츠와 디자인을 통해 고객 경험을 설계합니다.</p>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </section>
+
+      <section class="section-block" id="contact">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>패션·라이프스타일 브랜드와 함께합니다.</h2>
+          </div>
+          <p>
+            패션 플랫폼, 라이프스타일 브랜드, 자사몰 브랜드를 대상으로 브랜딩, 비주얼, 콘텐츠 디자인을 경험으로 확장합니다.
+          </p>
+        </div>
+
+        <div class="contact-strip">
+          <p>채용 담당자가 "브랜드를 이해하는 사람 같다"고 느낄 포트폴리오입니다.</p>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Brand & Content Designer</span>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+      </footer>
+    </div>
+
+    <script>
+      const links = document.querySelectorAll('.nav-links a');
+      const sections = Array.from(links).map((link) => document.querySelector(link.getAttribute('href')));
+
+      function updateActiveLink() {
+        const offset = window.innerHeight * 0.45;
+        let activeIndex = 0;
+
+        sections.forEach((section, index) => {
+          if (section && section.getBoundingClientRect().top <= offset) {
+            activeIndex = index;
+          }
+        });
+
+        links.forEach((link, index) => {
+          link.classList.toggle('active', index === activeIndex);
+        });
+      }
+
+      function revealSections() {
+        document.querySelectorAll('.section-block').forEach((block) => {
+          const rect = block.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            block.classList.add('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        updateActiveLink();
+        revealSections();
+      });
+
+      window.addEventListener('load', () => {
+        revealSections();
+        updateActiveLink();
+      });
+    </script>
+  </body>
+</html>
